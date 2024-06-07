@@ -76,7 +76,7 @@ const SideBar = ({ children }: { children: React.ReactNode }) => {
               </Link>
             </>
           )}
-          {decoded?.role == "USER" && (
+          {decoded?.role == "ADMIN" && (
             <>
               <Link
                 href="/dashboard/petManagement"

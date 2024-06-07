@@ -2,7 +2,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../app/store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://pet-adaption-xi.vercel.app/api",
+  baseUrl:
+    process.env.NODE_ENV == "development"
+      ? "http://localhost:5000/api"
+      : "https://pet-adaption-xi.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -19,7 +22,7 @@ const baseApi = createApi({
   baseQuery,
 
   endpoints: () => ({}),
-  tagTypes: ["pet", "petAdoptionRequest", "adoptedPet","profile"],
+  tagTypes: ["pet", "petAdoptionRequest", "adoptedPet", "profile"],
 });
 
 export default baseApi;
